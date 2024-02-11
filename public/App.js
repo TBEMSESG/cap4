@@ -13,7 +13,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-var issues = [{
+var initialIssues = [{
   id: 1,
   status: "new",
   owner: "Ravan",
@@ -92,8 +92,13 @@ var IssueTable = /*#__PURE__*/function (_React$Component4) {
   _inherits(IssueTable, _React$Component4);
   var _super4 = _createSuper(IssueTable);
   function IssueTable() {
+    var _this;
     _classCallCheck(this, IssueTable);
-    return _super4.apply(this, arguments);
+    _this = _super4.call(this);
+    _this.state = {
+      issues: initialIssues
+    };
+    return _this;
   }
   _createClass(IssueTable, [{
     key: "render",
@@ -102,7 +107,7 @@ var IssueTable = /*#__PURE__*/function (_React$Component4) {
         border: "1px solid green",
         padding: 4
       };
-      var issueRows = issues.map(function (issue) {
+      var issueRows = this.state.issues.map(function (issue) {
         return /*#__PURE__*/React.createElement(IssueRow, {
           key: issue.id,
           issue: issue
