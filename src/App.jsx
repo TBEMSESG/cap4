@@ -82,7 +82,7 @@ class IssueTable extends React.Component {
         );
     }
 }
-
+// final
 class IssueRow extends React.Component {
     render() {
         const issue = this.props.issue;

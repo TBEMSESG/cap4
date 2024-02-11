@@ -116,7 +116,7 @@ var IssueTable = /*#__PURE__*/function (_React$Component4) {
     }
   }]);
   return IssueTable;
-}(React.Component);
+}(React.Component); // final
 var IssueRow = /*#__PURE__*/function (_React$Component5) {
   _inherits(IssueRow, _React$Component5);
   var _super5 = _createSuper(IssueRow);
