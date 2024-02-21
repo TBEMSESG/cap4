@@ -19,7 +19,12 @@ const initialIssues = [
     }
 ]
 
-
+const sampleIssue = {
+    status: 'new', owner: 'Pieta', title: 'Completition Date should be optional'
+}
+const sampleIssue2 = {
+    status: 'new', owner: 'Pieta', title: 'Completition Date should be optional'
+}
 class HelloWorld extends React.Component {
     render() {
         const continents = ['Africa', 'America', 'Asia', 'Australia', 'Europe'];
@@ -62,9 +67,32 @@ class IssueTable extends React.Component {
 
     constructor() {
         super();
-        this.state = {issues: initialIssues};
+        this.state = {issues: []};
+        setTimeout(()=> {
+            this.createIssue(sampleIssue);
+            // setTimeout(()=> {
+            //     this.createIssue(sampleIssue);
+            // }, 2000)
+        }, 2000)
     }
-    
+    createIssue(issue) {
+        issue.id= this.state.issues.length +1;
+        issue.created = new Date();
+        const newIssueList = this.state.issues.slice();
+        newIssueList.push(issue);
+        this.setState({issues: newIssueList})
+    }
+
+    componentDidMount() {
+        this.loadData();
+    }
+
+    loadData() {
+        setTimeout(()=> {
+            this.setState({issues: initialIssues});
+
+        }, 500)
+    }
     render() {
         const rowStyle = {border: "1px solid green", padding:4 }
         const issueRows = this.state.issues.map(issue => <IssueRow key={issue.id} issue={issue}></IssueRow>)
@@ -92,6 +120,7 @@ class IssueTable extends React.Component {
 class IssueRow extends React.Component {
     render() {
         const issue = this.props.issue;
+        console.log('rendered...')
         return(
             <tr>
                 <td>{issue.id}</td>
