@@ -69,7 +69,7 @@ class IssueTable extends React.Component {
         const rowStyle = {border: "1px solid green", padding:4 }
         const issueRows = this.state.issues.map(issue => <IssueRow key={issue.id} issue={issue}></IssueRow>)
         return (
-            <table style= {{border: "1px solid blue"}}>
+            <table style= {{border: "1px solid red"}}>
                 <thead>
                     <tr>
                         <th>ID</th>
