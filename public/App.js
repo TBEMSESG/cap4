@@ -30,16 +30,6 @@ var initialIssues = [{
   due: undefined,
   title: "This is the second Issue from my fantasy List"
 }];
-var sampleIssue = {
-  status: 'new',
-  owner: 'Pieta',
-  title: 'Completition Date should be optional'
-};
-var sampleIssue2 = {
-  status: 'new',
-  owner: 'Pieta',
-  title: 'Completition Date should be optional'
-};
 var HelloWorld = /*#__PURE__*/function (_React$Component) {
   _inherits(HelloWorld, _React$Component);
   var _super = _createSuper(HelloWorld);
@@ -163,18 +153,38 @@ var IssueAdd = /*#__PURE__*/function (_React$Component6) {
     var _this;
     _classCallCheck(this, IssueAdd);
     _this = _super6.call(this);
-    setTimeout(function () {
-      _this.props.createIssue(sampleIssue);
-      // setTimeout(()=> {
-      //     this.createIssue(sampleIssue);
-      // }, 2000)
-    }, 2000);
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
   _createClass(IssueAdd, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var form = document.forms.issueAdd;
+      var issue = {
+        owner: form.owner.value,
+        title: form.title.value,
+        status: "New"
+      };
+      this.props.createIssue(issue);
+      form.owner.value = "";
+      form.title.value = "";
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("div", null, "This is a Placeholder for a form to add an issue.");
+      return /*#__PURE__*/React.createElement("form", {
+        name: "issueAdd",
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/React.createElement("input", {
+        type: "text",
+        name: "owner",
+        placeholder: "Owner"
+      }), /*#__PURE__*/React.createElement("input", {
+        type: "text",
+        name: "title",
+        placeholder: "Title"
+      }), /*#__PURE__*/React.createElement("button", null, "Add Issue"));
     }
   }]);
   return IssueAdd;

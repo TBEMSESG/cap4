@@ -19,12 +19,7 @@ const initialIssues = [
     }
 ]
 
-const sampleIssue = {
-    status: 'new', owner: 'Pieta', title: 'Completition Date should be optional'
-}
-const sampleIssue2 = {
-    status: 'new', owner: 'Pieta', title: 'Completition Date should be optional'
-}
+
 class HelloWorld extends React.Component {
     render() {
         const continents = ['Africa', 'America', 'Asia', 'Australia', 'Europe'];
@@ -122,17 +117,28 @@ class IssueAdd extends React.Component {
 
     constructor() {
         super();    
-        setTimeout(()=> {
-            this.props.createIssue(sampleIssue);
-            // setTimeout(()=> {
-            //     this.createIssue(sampleIssue);
-            // }, 2000)
-        }, 2000)
+        this.handleSubmit = this.handleSubmit.bind(this)
+
     };
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const form = document.forms.issueAdd;
+        const issue = {
+            owner: form.owner.value, title: form.title.value, status: "New",
+        }
+        this.props.createIssue(issue);
+        form.owner.value = ""; form.title.value="";
+    }
 
     render() {
         return (
-            <div>This is a Placeholder for a form to add an issue.</div>
+            <form name="issueAdd" onSubmit={this.handleSubmit}>
+                <input type="text" name="owner" placeholder="Owner" />
+                <input type="text" name="title" placeholder="Title" />
+                <button>Add Issue</button>
+
+            </form>
         );
     }
 }
