@@ -58,22 +58,8 @@ class IssueFilter extends React.Component {
     }
 }
 
-class IssueTable extends React.Component {
-
-    // constructor() {
-    //     super();
-    //     this.state = {issues: []};
-    //     setTimeout(()=> {
-    //         this.createIssue(sampleIssue);
-    //         // setTimeout(()=> {
-    //         //     this.createIssue(sampleIssue);
-    //         // }, 2000)
-    //     }, 2000)
-    // }
-
-    render() {
-        const rowStyle = {border: "1px solid green", padding:4 }
-        const issueRows = this.props.issues.map(issue => <IssueRow key={issue.id} issue={issue}></IssueRow>)
+function IssueTable(props) {
+        const issueRows = props.issues.map(issue => <IssueRow key={issue.id} issue={issue}></IssueRow>)
         return (
             <table style= {{border: "1px solid red"}}>
                 <thead>
@@ -93,14 +79,13 @@ class IssueTable extends React.Component {
             </table>
         );
     }
-}
+
+
 // final
-class IssueRow extends React.Component {
-    render() {
-        const issue = this.props.issue;
-        console.log('rendered...')
-        return(
-            <tr>
+function IssueRow(props){
+    const issue = props.issue;
+     return (
+                <tr>
                 <td>{issue.id}</td>
                 <td>{issue.status}</td>
                 <td>{issue.owner}</td>
@@ -109,8 +94,7 @@ class IssueRow extends React.Component {
                 <td>{issue.due ? issue.due.toDateString() : ''}</td>
                 <td>{issue.title}</td>
             </tr>
-        )
-    }
+    );
 }
 
 class IssueAdd extends React.Component {

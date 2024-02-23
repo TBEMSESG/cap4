@@ -88,71 +88,32 @@ var IssueFilter = /*#__PURE__*/function (_React$Component3) {
   }]);
   return IssueFilter;
 }(React.Component);
-var IssueTable = /*#__PURE__*/function (_React$Component4) {
-  _inherits(IssueTable, _React$Component4);
-  var _super4 = _createSuper(IssueTable);
-  function IssueTable() {
-    _classCallCheck(this, IssueTable);
-    return _super4.apply(this, arguments);
-  }
-  _createClass(IssueTable, [{
-    key: "render",
-    value:
-    // constructor() {
-    //     super();
-    //     this.state = {issues: []};
-    //     setTimeout(()=> {
-    //         this.createIssue(sampleIssue);
-    //         // setTimeout(()=> {
-    //         //     this.createIssue(sampleIssue);
-    //         // }, 2000)
-    //     }, 2000)
-    // }
+function IssueTable(props) {
+  var issueRows = props.issues.map(function (issue) {
+    return /*#__PURE__*/React.createElement(IssueRow, {
+      key: issue.id,
+      issue: issue
+    });
+  });
+  return /*#__PURE__*/React.createElement("table", {
+    style: {
+      border: "1px solid red"
+    }
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "ID"), /*#__PURE__*/React.createElement("th", null, "Status"), /*#__PURE__*/React.createElement("th", null, "Owner"), /*#__PURE__*/React.createElement("th", null, "Created"), /*#__PURE__*/React.createElement("th", null, "Effort"), /*#__PURE__*/React.createElement("th", null, "Due Date"), /*#__PURE__*/React.createElement("th", null, "Title"))), /*#__PURE__*/React.createElement("tbody", null, issueRows));
+}
 
-    function render() {
-      var rowStyle = {
-        border: "1px solid green",
-        padding: 4
-      };
-      var issueRows = this.props.issues.map(function (issue) {
-        return /*#__PURE__*/React.createElement(IssueRow, {
-          key: issue.id,
-          issue: issue
-        });
-      });
-      return /*#__PURE__*/React.createElement("table", {
-        style: {
-          border: "1px solid red"
-        }
-      }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "ID"), /*#__PURE__*/React.createElement("th", null, "Status"), /*#__PURE__*/React.createElement("th", null, "Owner"), /*#__PURE__*/React.createElement("th", null, "Created"), /*#__PURE__*/React.createElement("th", null, "Effort"), /*#__PURE__*/React.createElement("th", null, "Due Date"), /*#__PURE__*/React.createElement("th", null, "Title"))), /*#__PURE__*/React.createElement("tbody", null, issueRows));
-    }
-  }]);
-  return IssueTable;
-}(React.Component); // final
-var IssueRow = /*#__PURE__*/function (_React$Component5) {
-  _inherits(IssueRow, _React$Component5);
-  var _super5 = _createSuper(IssueRow);
-  function IssueRow() {
-    _classCallCheck(this, IssueRow);
-    return _super5.apply(this, arguments);
-  }
-  _createClass(IssueRow, [{
-    key: "render",
-    value: function render() {
-      var issue = this.props.issue;
-      console.log('rendered...');
-      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, issue.id), /*#__PURE__*/React.createElement("td", null, issue.status), /*#__PURE__*/React.createElement("td", null, issue.owner), /*#__PURE__*/React.createElement("td", null, issue.created.toDateString()), /*#__PURE__*/React.createElement("td", null, issue.effort), /*#__PURE__*/React.createElement("td", null, issue.due ? issue.due.toDateString() : ''), /*#__PURE__*/React.createElement("td", null, issue.title));
-    }
-  }]);
-  return IssueRow;
-}(React.Component);
-var IssueAdd = /*#__PURE__*/function (_React$Component6) {
-  _inherits(IssueAdd, _React$Component6);
-  var _super6 = _createSuper(IssueAdd);
+// final
+function IssueRow(props) {
+  var issue = props.issue;
+  return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, issue.id), /*#__PURE__*/React.createElement("td", null, issue.status), /*#__PURE__*/React.createElement("td", null, issue.owner), /*#__PURE__*/React.createElement("td", null, issue.created.toDateString()), /*#__PURE__*/React.createElement("td", null, issue.effort), /*#__PURE__*/React.createElement("td", null, issue.due ? issue.due.toDateString() : ''), /*#__PURE__*/React.createElement("td", null, issue.title));
+}
+var IssueAdd = /*#__PURE__*/function (_React$Component4) {
+  _inherits(IssueAdd, _React$Component4);
+  var _super4 = _createSuper(IssueAdd);
   function IssueAdd() {
     var _this;
     _classCallCheck(this, IssueAdd);
-    _this = _super6.call(this);
+    _this = _super4.call(this);
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -189,13 +150,13 @@ var IssueAdd = /*#__PURE__*/function (_React$Component6) {
   }]);
   return IssueAdd;
 }(React.Component);
-var IssueList = /*#__PURE__*/function (_React$Component7) {
-  _inherits(IssueList, _React$Component7);
-  var _super7 = _createSuper(IssueList);
+var IssueList = /*#__PURE__*/function (_React$Component5) {
+  _inherits(IssueList, _React$Component5);
+  var _super5 = _createSuper(IssueList);
   function IssueList() {
     var _this2;
     _classCallCheck(this, IssueList);
-    _this2 = _super7.call(this);
+    _this2 = _super5.call(this);
     _this2.state = {
       issues: []
     };
