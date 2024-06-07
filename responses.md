@@ -1,25 +1,34 @@
-# Cap 2 Exercises
-## REACT Classes
-### 1.
-Only one div can be rendered at a time, so to add more than one, you need to put them inside an outer div.
-### 2. 
-You find the error in the browser console "`main` is not a DOM element"
+# Cap 4 Exercises
 
-## Passing Data using Properties
-### 1.
-Uncaught Error: The `style` prop expects a mapping from style properties to values, not a string. For example, style={{marginRight: spacing + 'em'}} when using JSX.
+## Initial State
+page 63
 
-This works 
- <table style= {{border: "1px solid blue"}}> 
- 
+### 1.
+I would probably have the state - color in another state and compare them later in the render()
+
+## Updating state
+page 69
+
+### 1.
+As i use the same object, both are updated (objects are not copied, they are "linked")
+
 ### 2.
+its rendered twice due to the strict mode on
 
-### 3.
 
-## Event Handling
+## Lifting state up
+page 73
+
 ### 1.
-New issues are gone as they are never written anywhere but only exist in the DOM. Would need to write to a DB to have it persist a reload.
-### 2. 
-The page is always reloaded, no issue is added to the list. In the Address bar I see the propertiey of the form ?owner=&title=
+undefined
+
+## Event handling
+page 78
+### 1.
+to persist we would need to store the issues in a DB or in the browser localstorage. If it's only in the initialIssues, then at every page refresh all changes are lost. 
+
+### 2.
+the page refreshes and you see the inputs as params in the Address bar
+
 ### 3.
-it's been modifies two time, exactly as the previous exercize. 
+?? 
